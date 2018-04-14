@@ -226,9 +226,20 @@ class DBHelper {
    */
   static imageUrlForRestaurant(restaurant) {
     if(typeof restaurant.photograph == 'undefined') {
-      return (`/img/no_image.jpg`);
+      return (`/img/rest_images/no_image.webp`);
     }
-    return (`/img/${restaurant.photograph}.jpg`);
+    return (`/img/rest_images/${restaurant.photograph}.webp`);
+  }
+
+  /**
+   * Image Lazy Loader
+   */
+  static lazyLoad() {
+    if(typeof LazyLoad !== 'undefined') {
+      new LazyLoad({
+        elements_selector: '.restaurant-img'
+      });
+    }
   }
 
   /**

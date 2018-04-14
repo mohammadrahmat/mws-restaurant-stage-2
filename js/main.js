@@ -3,7 +3,6 @@ let restaurants,
   cuisines
 var map
 var markers = []
-let listTabIndexStartPoint = 3;
 
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
@@ -85,6 +84,7 @@ window.initMap = () => {
     center: loc,
     scrollwheel: false
   });
+
   updateRestaurants();
 }
 
@@ -134,6 +134,7 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     ul.append(createRestaurantHTML(restaurant));
   });
+  DBHelper.lazyLoad();
   addMarkersToMap();
 }
 
@@ -145,7 +146,6 @@ createRestaurantHTML = (restaurant) => {
 
   const image = document.createElement('img');
   image.className = 'restaurant-img';
-  //console.log(restaurant);
   image.alt = `${restaurant.name} - ${restaurant.cuisine_type} cuisine in the ${restaurant.neighborhood} Neighbourhood`; 
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   li.append(image);
@@ -166,10 +166,9 @@ createRestaurantHTML = (restaurant) => {
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
 
-  li.tabIndex = listTabIndexStartPoint++;
-  li.append(more)
+  li.append(more);
 
-  return li
+  return li;
 }
 
 /**
