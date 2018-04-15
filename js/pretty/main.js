@@ -83,15 +83,9 @@ window.initMap = () => {
   self.map = new google.maps.Map(map, {
     zoom: 12,
     center: loc,
-    scrollwheel: false
+    scrollwheel: false,
+    title: 'Google Maps'
   });
-  [].forEach.call(document.querySelectorAll('iframe'),
-    function fn(elem) {
-      if (elem)
-        elem.title = 'Google maps';
-    });
-
-
   updateRestaurants();
 };
 
