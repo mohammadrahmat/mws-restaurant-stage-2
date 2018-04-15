@@ -85,9 +85,12 @@ window.initMap = () => {
     center: loc,
     scrollwheel: false
   });
-  const iframe = map.querySelector('iframe');
-  if (iframe)
-    iframe.title = 'Google maps';
+  [].forEach.call(document.querySelectorAll('iframe'),
+    function fn(elem) {
+      if (elem)
+        elem.title = 'Google maps';
+    });
+
 
   updateRestaurants();
 };
