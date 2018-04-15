@@ -1,25 +1,27 @@
-const staticCacheName = 'mw-v2', 
+const staticCacheName = 'mw-v3', 
 pageSkeleton = 'index.html',
 expectedCaches = [staticCacheName];
 const thingsToCache = [
 	'/',
 	'./index.html',
+	'./favicon.ico',
 	'./restaurant.html',
 	'./css/styles.css',
 	'./js/dbhelper.js',
 	'./js/main.js',
 	'./js/restaurant_info.js',
 	'./data/restaurants.json',
-	'./img/1.jpg',
-	'./img/2.jpg',
-	'./img/3.jpg',
-	'./img/4.jpg',
-	'./img/5.jpg',
-	'./img/6.jpg',
-	'./img/7.jpg',
-	'./img/8.jpg',
-	'./img/9.jpg',
-	'./img/10.jpg'
+	'./img/rest_images/1.webp',
+	'./img/rest_images/2.webp',
+	'./img/rest_images/3.webp',
+	'./img/rest_images/4.webp',
+	'./img/rest_images/5.webp',
+	'./img/rest_images/6.webp',
+	'./img/rest_images/7.webp',
+	'./img/rest_images/8.webp',
+	'./img/rest_images/9.webp',
+	'./img/rest_images/10.webp',
+	'./img/rest_images/no_image.webp'
 ];
 
 self.addEventListener('install', event => {
