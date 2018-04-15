@@ -79,20 +79,18 @@ window.initMap = () => {
     lat: 40.722216,
     lng: -73.987501
   };
-  self.map = new google.maps.Map(document.getElementById('map'), {
+  const map = document.getElementById('map');
+  self.map = new google.maps.Map(map, {
     zoom: 12,
     center: loc,
     scrollwheel: false
   });
+  const iframe = map.querySelector('iframe');
+  if (iframe)
+    iframe.title = 'Google maps';
 
   updateRestaurants();
 };
-
-GMapHelper.load(
-  {
-    callback: 'initMap',
-  }
-);
 
 /**
  * Update page and map for current restaurants.
