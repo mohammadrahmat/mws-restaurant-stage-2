@@ -1,6 +1,7 @@
+'use-strict';
+
 let restaurant;
 var map;
-let reviewListTabIndexStart = 5;
 
 if(navigator.serviceWorker) {
   navigator.serviceWorker.register('sw.js');
@@ -65,7 +66,6 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   image.className = 'restaurant-img'
   image.alt = `${restaurant.name} - ${restaurant.cuisine_type} cuisine in the ${restaurant.neighborhood} Neighbourhood`;
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  image.tabIndex = 3;
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
@@ -96,7 +96,6 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
 
     hours.appendChild(row);
   }
-  hours.tabIndex = 4;
 }
 
 /**
@@ -126,7 +125,6 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  */
 createReviewHTML = (review) => {
   const li = document.createElement('li');
-  li.tabIndex = reviewListTabIndexStart++;
   const name = document.createElement('h4');
   name.innerHTML = review.name;
   li.appendChild(name);
