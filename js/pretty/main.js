@@ -8,7 +8,7 @@ var markers = []
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
 document.addEventListener('DOMContentLoaded', (event) => {
-  if(navigator.serviceWorker) {
+  if (navigator.serviceWorker) {
     navigator.serviceWorker.register('sw.js');
     console.log('sw registered');
   }
@@ -86,7 +86,13 @@ window.initMap = () => {
   });
 
   updateRestaurants();
-}
+};
+
+GMapHelper.load(
+  {
+    callback: 'initMap',
+  }
+);
 
 /**
  * Update page and map for current restaurants.
@@ -146,7 +152,7 @@ createRestaurantHTML = (restaurant) => {
 
   const image = document.createElement('img');
   image.className = 'restaurant-img';
-  image.alt = `${restaurant.name} - ${restaurant.cuisine_type} cuisine in the ${restaurant.neighborhood} Neighbourhood`; 
+  image.alt = `${restaurant.name} - ${restaurant.cuisine_type} cuisine in the ${restaurant.neighborhood} Neighbourhood`;
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   li.append(image);
 
